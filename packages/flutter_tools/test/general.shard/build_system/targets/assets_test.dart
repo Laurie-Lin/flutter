@@ -378,10 +378,11 @@ flutter:
               RegExp('--output=.*'),
             ],
             onRun: (List<String> args) {
-              final ArgResults parsedArgs = (ArgParser()
-                    ..addOption('input')
-                    ..addOption('output'))
-                  .parse(args);
+              final ArgResults parsedArgs =
+                  (ArgParser()
+                        ..addOption('input')
+                        ..addOption('output'))
+                      .parse(args);
 
               final File input = fileSystem.file(parsedArgs['input'] as String);
               expect(input, exists);

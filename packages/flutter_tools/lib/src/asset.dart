@@ -1085,7 +1085,8 @@ class ManifestAssetBundle implements AssetBundle {
       return false;
     });
 
-    for (final Uri shaderUri in flutterManifest.shaders) {
+    for (final AssetsEntry shaderEntry in flutterManifest.shaders) {
+      final Uri shaderUri = shaderEntry.uri;
       for (final AssetsEntry assetEntry in flutterManifest.assets) {
         final String assetPath = assetEntry.uri.path;
         final String shaderPath = shaderUri.path;
@@ -1116,9 +1117,9 @@ class ManifestAssetBundle implements AssetBundle {
         packageName: packageName,
         attributedPackage: attributedPackage,
         assetKind: AssetKind.shader,
-        flavors: <String>{},
-        platforms: <String>{},
-        transformers: <AssetTransformerEntry>[],
+        flavors: shaderEntry.flavors,
+        platforms: shaderEntry.platforms,
+        transformers: shaderEntry.transformers,
       );
     }
 
